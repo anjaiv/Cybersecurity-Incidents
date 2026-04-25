@@ -1,0 +1,6 @@
+2026-04-25 20:12:24,708 - email='Hello, please find attached the meeting agenda for tomorrow.' ml_result=Safe confidence=0.86 threat_level=MEDIUM
+2026-04-25 20:12:39,076 - email='From: Microsoft Security <no-reply@micr0soft-support.com>\nSubject: URGENT: Your Microsoft 365 password expires in 24 hou' ml_result=Phishing confidence=0.91 threat_level=HIGH
+2026-04-25 20:13:00,651 - email='Dear user, your account has been suspended. Click here to verify your password immediately.' ml_result=Phishing confidence=0.92 threat_level=HIGH
+2026-04-25 20:13:42,432 - email='From: Microsoft Security <no-reply@micr0soft-support.com>\nSubject: URGENT: Your Microsoft 365 password expires in 24 hou' ml_result=Phishing confidence=0.91 threat_level=HIGH
+2026-04-25 20:15:58,735 - email='From: GitHub <noreply@github.com>\nSubject: The ReadME Project - November highlights\n\nHi there,\n\nThis month on the ReadME' ml_result=Safe confidence=0.51 threat_level=LOW
+2026-04-25 20:25:55,045 - INFO - ML model trained and ready

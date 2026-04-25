@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Phishing Email Analysis System - dark hacker design system.
+   All colors MUST be HSL. */
+
+@layer base {
+  :root {
+    /* Core surfaces - near-black charcoal */
+    --background: 120 10% 4%;
+    --foreground: 120 20% 92%;
+
+    --card: 120 12% 6%;
+    --card-foreground: 120 20% 92%;
+
+    --popover: 120 14% 5%;
+    --popover-foreground: 120 20% 92%;
+
+    /* Primary = neon green */
+    --primary: 120 100% 54%;
+    --primary-foreground: 120 30% 6%;
+
+    /* Secondary = dim panel */
+    --secondary: 120 12% 10%;
+    --secondary-foreground: 120 20% 88%;
+
+    --muted: 120 8% 12%;
+    --muted-foreground: 120 8% 60%;
+
+    --accent: 142 76% 45%;
+    --accent-foreground: 120 30% 6%;
+
+    /* Destructive = neon phishing red */
+    --destructive: 0 95% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Warning = amber */
+    --warning: 42 100% 55%;
+    --warning-foreground: 40 30% 8%;
+
+    /* Safe = emerald */
+    --safe: 145 80% 48%;
+    --safe-foreground: 145 30% 6%;
+
+    --border: 120 30% 14%;
+    --input: 120 20% 12%;
+    --ring: 120 100% 54%;
+
+    --radius: 0.6rem;
+
+    /* Glows + gradients */
+    --glow-neon: 0 0 24px hsl(120 100% 54% / 0.45);
+    --glow-red: 0 0 22px hsl(0 95% 58% / 0.55);
+    --glow-amber: 0 0 18px hsl(42 100% 55% / 0.45);
+    --glow-safe: 0 0 22px hsl(145 80% 48% / 0.45);
+    --gradient-panel: linear-gradient(135deg, hsl(120 14% 7% / 0.9), hsl(120 12% 5% / 0.85));
+    --grid-color: hsl(120 60% 30% / 0.08);
+
+    --sidebar-background: 120 12% 5%;
+    --sidebar-foreground: 120 20% 88%;
+    --sidebar-primary: 120 100% 54%;
+    --sidebar-primary-foreground: 120 30% 6%;
+    --sidebar-accent: 120 12% 10%;
+    --sidebar-accent-foreground: 120 20% 88%;
+    --sidebar-border: 120 30% 14%;
+    --sidebar-ring: 120 100% 54%;
+  }
+
+  /* Force dark - this app is dark-only */
+  .dark {
+    --background: 120 10% 4%;
+    --foreground: 120 20% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+      radial-gradient(ellipse at top, hsl(120 60% 12% / 0.35), transparent 60%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+    background-attachment: fixed;
+  }
+
+  .font-mono-cyber {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .font-display {
+    font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .panel {
+    background: var(--gradient-panel);
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(8px);
+    box-shadow:
+      inset 0 0 0 1px hsl(120 100% 54% / 0.04),
+      0 0 0 1px hsl(120 100% 54% / 0.02),
+      0 10px 40px -20px hsl(120 100% 30% / 0.25);
+    border-radius: var(--radius);
+  }
+
+  .panel-glow {
+    box-shadow:
+      inset 0 0 0 1px hsl(120 100% 54% / 0.08),
+      0 0 30px -8px hsl(120 100% 54% / 0.25),
+      0 10px 40px -20px hsl(120 100% 30% / 0.4);
+  }
+
+  .text-neon {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 12px hsl(120 100% 54% / 0.55);
+  }
+
+  .text-danger {
+    color: hsl(var(--destructive));
+    text-shadow: 0 0 14px hsl(0 95% 58% / 0.55);
+  }
+
+  .text-safe {
+    color: hsl(var(--safe));
+    text-shadow: 0 0 12px hsl(145 80% 48% / 0.5);
+  }
+
+  .text-warn {
+    color: hsl(var(--warning));
+    text-shadow: 0 0 10px hsl(42 100% 55% / 0.5);
+  }
+
+  .glow-border-neon {
+    border-color: hsl(120 100% 54% / 0.5);
+    box-shadow: var(--glow-neon);
+  }
+
+  .glow-border-red {
+    border-color: hsl(0 95% 58% / 0.6);
+    box-shadow: var(--glow-red);
+  }
+
+  .glow-border-safe {
+    border-color: hsl(145 80% 48% / 0.55);
+    box-shadow: var(--glow-safe);
+  }
+
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      hsl(120 100% 54% / 0.025) 2px,
+      hsl(120 100% 54% / 0.025) 3px
+    );
+    border-radius: inherit;
+  }
+
+  .cursor-blink::after {
+    content: '|';
+    color: hsl(var(--primary));
+    animation: blink 1s steps(2, start) infinite;
+    margin-left: 2px;
+  }
+}
+
+@layer utilities {
+  @keyframes blink {
+    to { visibility: hidden; }
+  }
+
+  @keyframes pulse-danger {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(0 95% 58% / 0.5); }
+    50% { box-shadow: 0 0 22px 6px hsl(0 95% 58% / 0.55); }
+  }
+  .animate-pulse-danger { animation: pulse-danger 1.8s ease-in-out infinite; }
+
+  @keyframes pulse-neon {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(120 100% 54% / 0.4); }
+    50% { box-shadow: 0 0 24px 6px hsl(120 100% 54% / 0.55); }
+  }
+  .animate-pulse-neon { animation: pulse-neon 2s ease-in-out infinite; }
+
+  @keyframes scan-line {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+  .animate-scan { animation: scan-line 4s linear infinite; }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+  .animate-flicker { animation: flicker 3s ease-in-out infinite; }
+}
